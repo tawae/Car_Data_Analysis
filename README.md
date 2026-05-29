@@ -177,5 +177,24 @@ Thị trường xe được phân thành 4 phân khúc chính với đặc trưn
 
 *Lưu ý: Bạn có thể xem hình ảnh trực quan chi tiết về độ phân tán, Silhouette plot, cũng như biểu đồ EDA trong thư mục `output/`.*
 
+## Business Insights bổ sung
+
+Ngoài các biểu đồ EDA, notebook đã bổ sung nhóm biểu đồ phục vụ quyết định kinh doanh cho showroom xe cũ:
+
+| Vấn đề kinh doanh | Insight từ dữ liệu hiện có | Hàm ý hành động |
+|---|---|---|
+| **Tốc độ khấu hao** | Theo dữ liệu listing, nhóm xe Mỹ và Âu đang có tốc độ khấu hao ước tính cao nhất (~12.6% và ~11.2%/năm), trong khi nhóm xe Nhật thấp hơn (~4.9%/năm). Khi tính theo từng hãng đủ mẫu, BMW/Kia/Ford/Mercedes-Benz là nhóm khấu hao cao; Honda/VinFast thấp hơn. | Ưu tiên nhập các dòng giữ giá tốt khi cần vòng quay vốn an toàn; ép biên an toàn cao hơn với các dòng/nhóm/hãng khấu hao nhanh. |
+| **Mileage Penalty** | Sau khi kiểm soát dòng xe, tuổi xe, kiểu dáng, xuất xứ, hộp số và nhiên liệu, mỗi **10.000 km** làm giảm khoảng **8.2 triệu VND**. | Có thể đưa hệ số ODO vào barem thu mua: `Giá thu mua = Giá trần dòng xe/đời xe - 8.2 triệu * số block 10.000 km`. |
+| **Market Gap & Supply Concentration** | Cụm **xe mới/phổ thông** chiếm ~38.7% nguồn cung; phân khúc dày nhất là **SUV 700tr-1 tỷ** (~13.5%) và **SUV 500-700tr** (~10.3%). | Tránh tăng tồn kho ở các vùng quá đông nếu không có lợi thế bán nhanh; theo dõi các phân khúc nguồn cung thấp hơn để tìm cơ hội giữ giá. |
+| **Feature Premium** | Xe nhập khẩu có premium bình quân trọng số ~7.3% so với xe trong nước khi so cùng dòng/năm, nhưng không phải dòng nào cũng cao hơn. Xe số tự động có premium ~23.3% so với số sàn. | Không áp premium nhập khẩu cố định cho mọi dòng xe; giữ `xuat_xu` và `hop_so` làm biến định giá khi chốt giá bán ra. |
+
+Các biểu đồ mới:
+- `output/business_01_depreciation_curve.png`
+- `output/business_02_mileage_penalty.png`
+- `output/business_03_feature_premium.png`
+- `output/business_04_market_gap_supply.png`
+
+> Lưu ý: Đây là phân tích từ **giá đăng bán** trên oto.com.vn, không phải giá giao dịch cuối cùng. Các hệ số nên được xem là mốc tham chiếu ban đầu và cần hiệu chỉnh thêm bằng dữ liệu bán thực tế nếu showroom có.
+
 ---
 *Dự án học thuật — PTIT, 2025*
